@@ -2,7 +2,7 @@
 
 AI-owy silnik decyzji contentowych. Nie pisze treści — wskazuje, **co tworzyć następne**.
 
-Next.js 14 (App Router) · TypeScript · zero zewnętrznych zależności UI (czysty CSS, design tokens).
+Next.js 16 (App Router) · TypeScript · zero zewnętrznych zależności UI (czysty CSS, design tokens).
 
 ## Uruchomienie w VS Code
 
