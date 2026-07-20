@@ -1,0 +1,294 @@
+/* ── Content Compass · design tokens ─────────────────────────────
+   Oparte na LOWSTYLELIFE GLOBAL DESIGN SYSTEM (ailowstylelife.online) */
+
+:root {
+  --bg: #050711;
+  --glass: rgba(15, 22, 45, 0.72);
+  --glass-strong: rgba(15, 22, 45, 0.92);
+  --accent-blue: #8fd8ff;
+  --accent-purple: #b58cff;
+  --accent-gold: #ffd38a;
+  --text-main: #f5f7ff;
+  --text-soft: #aab4d6;
+  --border: rgba(180, 205, 255, 0.12);
+  --border-strong: rgba(180, 205, 255, 0.24);
+  --radius: 18px;
+  --grad-btn: linear-gradient(135deg, #8fd8ff, #b58cff);
+  --rising: #7ee6a8;
+  --declining: #ff9d9d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(143, 216, 255, 0.08), transparent 60%),
+    radial-gradient(900px 500px at 10% 110%, rgba(181, 140, 255, 0.07), transparent 60%),
+    var(--bg);
+  color: var(--text-main);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ziarno filmowe */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  z-index: 999;
+}
+
+h1, h2, h3, .display {
+  font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px 96px;
+}
+
+/* ── Nawigacja ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  background: rgba(5, 7, 17, 0.78);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+.brand-mark {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  display: grid;
+  place-items: center;
+  background: var(--glass);
+}
+.nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+.nav-links a {
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  transition: color 0.15s, background 0.15s;
+}
+.nav-links a:hover { color: var(--text-main); background: rgba(180, 205, 255, 0.07); }
+.nav-links a.active {
+  color: var(--bg);
+  background: var(--grad-btn);
+  font-weight: 600;
+}
+.nav-links a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 2px;
+}
+
+/* ── Nagłówki stron ── */
+.page-head { padding: 56px 0 32px; }
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  color: var(--accent-gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.page-head h1 { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; }
+.page-head p.lede { color: var(--text-soft); max-width: 62ch; margin-top: 12px; }
+
+/* ── Panele szklane ── */
+.panel {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  backdrop-filter: blur(10px);
+}
+.panel + .panel { margin-top: 20px; }
+
+/* ── Werdykt ── */
+.verdict {
+  position: relative;
+  overflow: hidden;
+  border-color: var(--border-strong);
+  background: var(--glass-strong);
+}
+.verdict::before {
+  content: "";
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: 420px; height: 420px;
+  background: radial-gradient(closest-side, rgba(255, 211, 138, 0.12), transparent);
+  pointer-events: none;
+}
+.verdict-head { display: flex; align-items: flex-start; gap: 22px; flex-wrap: wrap; }
+.verdict h2 { font-size: clamp(1.25rem, 2.6vw, 1.7rem); max-width: 34ch; }
+.verdict-body { margin-top: 18px; display: grid; gap: 12px; color: var(--text-soft); max-width: 72ch; }
+.verdict-body p strong { color: var(--text-main); }
+.verdict-meta {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: var(--text-soft);
+}
+
+/* ── Kompas (element sygnaturowy) ── */
+.compass { flex: none; }
+.compass svg { display: block; }
+.compass .needle { transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1); transform-origin: 50% 50%; }
+.compass .score-text {
+  fill: var(--text-main);
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 700;
+}
+.compass .score-label { fill: var(--text-soft); font-size: 7px; letter-spacing: 0.12em; }
+
+/* ── Siatki kart ── */
+.grid { display: grid; gap: 18px; margin-top: 26px; }
+.grid.cols-2 { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+
+.card {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+.card h3 { font-size: 1.08rem; }
+.card .muted { color: var(--text-soft); font-size: 0.9rem; }
+
+.card-top { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; }
+
+/* ── Odznaki poziomu ── */
+.tier {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.tier-start { background: rgba(126, 230, 168, 0.14); color: var(--rising); border: 1px solid rgba(126, 230, 168, 0.35); }
+.tier-plan { background: rgba(255, 211, 138, 0.12); color: var(--accent-gold); border: 1px solid rgba(255, 211, 138, 0.3); }
+.tier-wait { background: rgba(255, 157, 157, 0.1); color: var(--declining); border: 1px solid rgba(255, 157, 157, 0.28); }
+
+/* ── Paski metryk ── */
+.meter { display: grid; gap: 6px; }
+.meter-row { display: grid; grid-template-columns: 130px 1fr 34px; align-items: center; gap: 10px; font-size: 0.78rem; color: var(--text-soft); }
+.meter-track { height: 5px; border-radius: 999px; background: rgba(180, 205, 255, 0.1); overflow: hidden; }
+.meter-fill { height: 100%; border-radius: 999px; background: var(--grad-btn); }
+.meter-fill.inverse { background: linear-gradient(135deg, #ffd38a, #ff9d9d); }
+
+/* ── Sekcje "co / dlaczego / dlaczego teraz" ── */
+.qa { display: grid; gap: 10px; font-size: 0.9rem; }
+.qa dt {
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--accent-blue);
+  font-weight: 600;
+}
+.qa dd { color: var(--text-soft); margin-bottom: 4px; }
+
+/* ── Trendy ── */
+.trend-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.trend-row:last-child { border-bottom: none; }
+.trend-dir { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.dir-rising { color: var(--rising); }
+.dir-declining { color: var(--declining); }
+.dir-evergreen { color: var(--accent-blue); }
+.dir-seasonal { color: var(--accent-gold); }
+
+/* ── Klastry ── */
+.cluster { border-left: 2px solid var(--border-strong); padding-left: 20px; margin-top: 18px; }
+.cluster-node { padding: 10px 0; }
+.cluster-node h3 { font-size: 1rem; }
+.cluster-children { margin-left: 22px; border-left: 1px dashed var(--border); padding-left: 18px; }
+.coverage-pair { display: flex; gap: 18px; font-size: 0.78rem; color: var(--text-soft); margin-top: 4px; flex-wrap: wrap; }
+.coverage-pair b { color: var(--text-main); font-weight: 600; }
+.gap-flag { color: var(--accent-gold); font-weight: 600; }
+
+/* ── Planer sezonowy ── */
+.season {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 20px;
+  align-items: baseline;
+}
+.season .window { font-family: "Inter Tight", sans-serif; font-weight: 700; color: var(--accent-gold); white-space: nowrap; }
+
+/* ── Przyciski ── */
+button.btn {
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--bg);
+  background: var(--grad-btn);
+  border: none;
+  border-radius: 999px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+button.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+button.btn:disabled { opacity: 0.5; cursor: wait; transform: none; }
+.hint { font-size: 0.8rem; color: var(--text-soft); }
+
+@media (max-width: 640px) {
+  .page-head { padding: 40px 0 24px; }
+  .panel { padding: 20px; }
+  .meter-row { grid-template-columns: 104px 1fr 30px; }
+  .season { grid-template-columns: 1fr; }
+}
